@@ -44,7 +44,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-
+db.categories = require("./categories.model.js")(sequelize, Sequelize);
 db.products = require("./products.model.js")(sequelize, Sequelize);
 db.users = require("./users.model.js")(sequelize, Sequelize);
 db.activities = require("./activities.model.js")(sequelize, Sequelize);
@@ -56,9 +56,6 @@ db.users.belongsToMany(db.products, {
     through: db.activities,
     //foreignKey: "user_id"
 });
-
-db.products = require("./products.model.js")(sequelize, Sequelize);
-db.categories = require("./categories.model.js")(sequelize, Sequelize);
 
 db.categories.hasMany(db.products);
 db.products.belongsTo(db.categories, {

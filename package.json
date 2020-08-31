@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +14,13 @@
     "express": "^4.17.1",
     "mysql2": "^2.1.0",
     "sequelize": "^6.3.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiennmols/crowdFundingSV_mysql_sequelize.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tiennmols/crowdFundingSV_mysql_sequelize/issues"
+  },
+  "homepage": "https://github.com/tiennmols/crowdFundingSV_mysql_sequelize#readme"
 }

@@ -3,6 +3,8 @@ module.exports = app => {
     const categories = require("../controllers/product.controller.js");
     const users = require("../controllers/user.controller.js");
     const activities = require("../controllers/user.controller.js")
+    const detailProduct = require("../controllers/product.controller.js");
+    const detailCategory = require("../controllers/product.controller.js");
 
     const router = require("express").Router();
 
@@ -14,6 +16,9 @@ module.exports = app => {
     router.post("/activities", activities.createActivity)
     router.post("/products", products.createProduct);
     router.post("/categories", categories.createCategory);
+
+    router.get("/detailProduct", detailProduct.detailProduct);
+    router.get("/detailCategory", detailCategory.detailCategory);
 
     app.use('/', router);
 }

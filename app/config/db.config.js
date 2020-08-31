@@ -19,7 +19,7 @@
 
 module.exports = {
     HOST: "localhost",
-    PORT: 3308,
+    PORT: 3306,
     USER: "root",
     PASSWORD: "",
     DB: "crfsv",
