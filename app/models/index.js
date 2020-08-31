@@ -48,21 +48,28 @@ db.categories = require("./categories.model.js")(sequelize, Sequelize);
 db.products = require("./products.model.js")(sequelize, Sequelize);
 db.users = require("./users.model.js")(sequelize, Sequelize);
 db.activities = require("./activities.model.js")(sequelize, Sequelize);
+
 db.products.belongsToMany(db.users, {
-    through: db.activities,
-    //foreignKey: "product_id"
+  through: db.activities,
+  foreignKey: "product_id",
+  otherKey: "user_id",
+  as: 'users'
 });
+
 db.users.belongsToMany(db.products, {
-    through: db.activities,
-    //foreignKey: "user_id"
+  through: db.activities,
+  foreignKey: "user_id",
+  otherKey: "product_id",
+  as: 'products'
 });
 
 db.categories.hasMany(db.products);
 db.products.belongsTo(db.categories, {
-  foreignKey: {
-    name: "category_id",
-    allowNull: false
-  }
+as: 'products',
+foreignKey: {
+  name: "category_id",
+  allowNull: false
+}
 });
 
 // const activities = sequelize.define("activities", {

@@ -1,6 +1,8 @@
 const db = require("../models");
+const User = db.users;
 const Product = db.products;
 const Category = db.categories;
+const Activity = db.activities;
 
 exports.createCategory = (req, res) => {
     if(!req.body.category) {
@@ -64,7 +66,7 @@ exports.detailProduct = (req, res) => {
         ],
     })
     .then((product) => {
-        // res.send(product);
+        res.send(product);
         // console.log(product);
     })  
     .catch((err) => {
