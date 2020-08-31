@@ -49,8 +49,8 @@ exports.createProduct = (req, res) => {
         });
 };
 
-exports.detailProduct = (req, res) => {
-    Product.findByPk(req.body.id, {
+exports.detailProduct = async function getDetailProduct(req, res) {
+    const product = await Product.findByPk(req.body.id, {
         include: [
             {
                 model: User,
@@ -65,37 +65,23 @@ exports.detailProduct = (req, res) => {
             },
         ],
     })
-    .then((product) => {
-        res.send(product);
-        // console.log(product);
-    })  
-    .catch((err) => {
-        console.log(err);
-        res.send(err);
-    });
     
     //Count interested
-    Activity.count({
+    const interested = await Activity.count({
         where: {interested: 1, product_id: req.body.id}
     })
-    .then(interested => {
-        console.log( typeof(interested));
-    })
+    
     // Count liked
-    Activity.count({
+    const liked = await Activity.count({
         where: {liked: 1, product_id: req.body.id}
     })
-    .then(liked => {
-        console.log(liked);
-    })
+    
     // Sum backed total
-    Activity.sum('back_total', {
+    const backedTotal = await Activity.sum('back_total', {
         where: {product_id: req.body.id}
     })
-    .then(back_total => {
-        console.log(back_total);
-    })
 
+    console.log(product, interested, liked, backedTotal);
 };
 
 

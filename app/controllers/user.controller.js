@@ -44,7 +44,7 @@ exports.createActivity = (req, res) => {
                         }
                     });
                     console.log('>> added successfully');
-                    console.log("Alooo",product);
+                    // console.log("Alooo",product);
                     res.send("Oke");
                 });
         })
